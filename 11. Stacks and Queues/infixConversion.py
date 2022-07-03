@@ -26,7 +26,7 @@ def infix(exp):
             pre.append(ch)
 
         elif(ch == ')'):
-            while(ops[-1] != '('):
+            while(len(ops) > 0 and ops[-1] != '('):
                 op = ops.pop()
 
                 postV2 = post.pop()
@@ -40,7 +40,8 @@ def infix(exp):
                 preV = op + preV1 + preV2 
                 post.append(preV)
 
-            ops.append(ch)
+            if len(ops) > 0:
+                ops.pop()
 
         elif(ch == '+' or ch == '-' or ch == '*' or ch == "/"):
             while(len(ops)> 0 and ops[-1] != '(' and precedence(ch) <= precedence(ops[-1])):
@@ -54,7 +55,7 @@ def infix(exp):
                 
                 preV2 = pre.pop()
                 preV1 = pre.pop()
-                preV = preV1 + preV2 + op
+                preV = op + preV1 + preV2 
                 post.append(preV)
                 
             ops.append(ch)
