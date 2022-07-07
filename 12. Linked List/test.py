@@ -85,6 +85,23 @@ class LinkedList:
         temp.next = None
         self.size -= 1
 
+    def removeAt(self, idx):
+    #write your code here
+        if idx < 0 or idx > self.size:
+            print("Invalid argument")
+        elif idx == 0:
+            self.removeFirst()
+        elif idx == self.size:
+            self.removeLast()
+        else:
+            temp = self.head
+            i = 0
+            while i < idx-1:
+                temp = temp.next
+                i += 1
+            temp.next = temp.next.next
+            self.size -= 1
+
     def display(self):
         printval = self.head
         while printval:
@@ -106,6 +123,6 @@ while i <= 20:
 li.display()
 li._size()
 print("----------------------------------")
-li.removeLast()
+li.removeAt(10)
 li.display()
 li._size()

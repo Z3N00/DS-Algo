@@ -37,6 +37,8 @@ class LinkedList:
     def removeFirst(self):
         if self.size == 0:
             print("List is empty")
+        elif idx == 0:
+            self.removeFirst()
         elif self.size == 1:
             self.head = self.tail = None
             self.size = 0
@@ -86,6 +88,22 @@ class LinkedList:
             
     def removeAt(self, idx):
         #write your code here
+        if idx < 0 or idx > self.size:
+            print("Invalid argument")
+            
+        elif idx == 0:
+            self.removeFirst()
+
+        elif idx == self.size:
+            self.removeLast()
+        else:
+            temp = self.head
+            i = 0
+            while i < idx-1:
+                temp = temp.next
+                i += 1
+            temp.next = temp.next.next
+            self.size -= 1
 
     def addAt(self, idx, val):
         if idx < 0 or idx > self.size:
