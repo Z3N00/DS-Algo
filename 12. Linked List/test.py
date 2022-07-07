@@ -74,6 +74,17 @@ class LinkedList:
         self.head = self.head.next
         self.size -= 1
 
+    def removeLast(self):
+        #write your code here
+        temp = self.head
+        i = 0
+        while i < self.size - 2:
+            temp = temp.next
+            i += 1
+        self.tail = temp
+        temp.next = None
+        self.size -= 1
+
     def display(self):
         printval = self.head
         while printval:
@@ -88,9 +99,13 @@ while i <= 20:
     li.addLast(i)
     i += 1
 
-li.addFirst(100)
-li.addAt(3, 200)
-li.giveAt(12)
-li.removeFirst()
+#li.addFirst(100)
+#li.addAt(3, 200)
+#li.giveAt(12)
+#li.removeFirst()
+li.display()
+li._size()
+print("----------------------------------")
+li.removeLast()
 li.display()
 li._size()

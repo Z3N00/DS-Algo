@@ -105,6 +105,14 @@ class LinkedList:
             
     def removeLast(self):
         #write your code here
+        temp = self.head
+        i = 0
+        while i < self.size - 2:
+            temp = temp.next
+            i += 1
+        self.tail = temp
+        temp.next = None
+        self.size -= 1
 
 l1 = LinkedList()
 while True:
