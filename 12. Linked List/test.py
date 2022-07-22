@@ -102,6 +102,48 @@ class LinkedList:
             temp.next = temp.next.next
             self.size -= 1
 
+    
+    def __nodeAt(self, idx):
+        temp = self.head
+        i = 0
+        while i < idx:
+            temp = temp.next
+            i += 1
+        return temp
+
+    def reverseDI(self):
+        #write your code here
+        li = 0
+        ri = self.size -1
+        
+        while li < ri:
+            left = self.__nodeAt(li)
+            right = self.__nodeAt(ri)
+
+            temp = left.data
+            left.data = right.data
+            right.data = temp
+
+            li += 1
+            ri -= 1
+
+    def reversePI(self):
+        prev = None
+        curr = self.head
+
+        while curr != None:
+            next = curr.next
+
+            curr.next = prev
+            prev = curr
+            curr = next
+
+        temp = self.head
+        self.head = self.tail
+        self.tail = temp
+
+
+
     def display(self):
         printval = self.head
         while printval:
@@ -113,7 +155,7 @@ class LinkedList:
 li = LinkedList()
 i = 10
 while i <= 20:
-    li.addLast(i)
+    li.addFirst(i)
     i += 1
 
 #li.addFirst(100)
@@ -121,8 +163,10 @@ while i <= 20:
 #li.giveAt(12)
 #li.removeFirst()
 li.display()
-li._size()
 print("----------------------------------")
-li.removeAt(10)
-li.display()
-li._size()
+li.giveAt(2)
+
+#li.removeAt(10)
+# li.reversePI()
+# li.display()
+# li._size()
