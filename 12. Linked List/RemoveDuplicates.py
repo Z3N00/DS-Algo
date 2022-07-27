@@ -105,14 +105,14 @@ class LinkedList:
         if idx < 0 or idx > size:
             print("Invalid arguments")
         elif idx == 0:
-            addFirst(val)
+            self.addFirst(val)
         elif idx == size:
-            addLast(val)
+            self.addLast(val)
         else:
             node = Node()
             node.data = val
 
-            temp = head
+            temp = self.head
             i = 0
             while i < idx - 1:
                 temp = temp.next
@@ -147,11 +147,11 @@ class LinkedList:
         if idx < 0 or idx >= size:
             print("Invalid arguments")
         elif idx == 0:
-            removeFirst()
+            self.removeFirst()
         elif idx == size - 1:
             self.removeLast()
         else:
-            temp = head
+            temp = self.head
             i = 0
             while i < idx - 1:
                 temp = temp.next

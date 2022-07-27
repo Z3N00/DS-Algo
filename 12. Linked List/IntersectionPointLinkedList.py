@@ -30,7 +30,7 @@ class LinkedList(object):
         return self.size
 
     def display(self):
-        temp = head
+        temp = self.head
         while temp is not None:
             print(temp.data + " ", end = '')
             temp = temp.next
@@ -90,14 +90,14 @@ class LinkedList(object):
         if idx < 0 or idx > size:
             print("Invalid arguments")
         elif idx == 0:
-            addFirst(val)
+            self.addFirst(val)
         elif idx == size:
-            addLast(val)
+            self.addLast(val)
         else:
             node = Node()
             node.data = val
 
-            temp = head
+            temp = self.head
             i = 0
             while i < idx - 1:
                 temp = temp.next
@@ -128,11 +128,11 @@ class LinkedList(object):
         if idx < 0 or idx >= size:
             print("Invalid arguments")
         elif idx == 0:
-            removeFirst()
+            self.removeFirst()
         elif idx == size - 1:
             self.removeLast()
         else:
-            temp = head
+            temp = self.head
             i = 0
             while i < idx - 1:
                 temp = temp.next
@@ -151,7 +151,7 @@ class LinkedList(object):
 
     def reverseDI(self):
         li = 0
-        ri = size - 1
+        ri = self.size - 1
         while li < ri:
             left = self.__getNodeAt(li)
             right = self.__getNodeAt(ri)
@@ -164,7 +164,7 @@ class LinkedList(object):
             ri -= 1
 
     def reversePI(self):
-        if size <= 1:
+        if self.size <= 1:
             return
 
         prev = None
@@ -181,22 +181,22 @@ class LinkedList(object):
         tail = temp
 
     def kthFromLast(self, k):
-        slow = head
-        fast = head
+        slow = self.head
+        fast = self.head
         i = 0
         while i < k:
             fast = fast.next
             i += 1
 
-        while fast is not tail:
+        while fast is not self.tail:
             slow = slow.next
             fast = fast.next
 
         return slow.data
 
     def mid(self):
-        f = head
-        s = head
+        f = self.head
+        s = self.head
 
         while f.next is not None and f.next.next is not None:
             f = f.next.next
@@ -240,16 +240,16 @@ class LinkedList(object):
         return s
 
     @staticmethod
-    def mergeSort(head, tail):
+    def mergeSort(self, head, tail):
         if head is tail:
             br = LinkedList()
             br.addLast(head.data)
             return br
 
-        mid = midNode(head, tail)
-        fsh = mergeSort(head, mid)
-        ssh = mergeSort(mid.next, tail)
-        sl = mergeTwoSortedLists(fsh, ssh)
+        mid = self.midNode(head, tail)
+        fsh = self.mergeSort(head, mid)
+        ssh = self.mergeSort(mid.next, tail)
+        sl = self.mergeTwoSortedLists(fsh, ssh)
         return sl
 
     def removeDuplicates(self):
@@ -334,11 +334,11 @@ class LinkedList(object):
         print(node.data + " ", end = '')
 
     def displayReverse(self):
-        self.__displayReverseHelper(head)
+        self.__displayReverseHelper(self.head)
         print()
 
     def __reversePRHelper(self, node):
-        if node is tail:
+        if node is self.tail:
             return
         self.__reversePRHelper(node.next)
         node.next.next = node
