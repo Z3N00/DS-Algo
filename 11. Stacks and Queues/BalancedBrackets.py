@@ -7,9 +7,7 @@
 # [(a + b) + {(c + d) * (e / f)} -> false
 # ([(a + b) + {(c + d) * (e / f)}] -> false
 
-from cmath import exp
 
-from numpy import False_
 
 
 def balanced_brackets(expression):
@@ -46,3 +44,5 @@ def balanced_brackets(expression):
         return True
     else:
         return False
+
+print(balanced_brackets("[()]"))
